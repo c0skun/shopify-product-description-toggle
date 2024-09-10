@@ -1,0 +1,41 @@
+<div class="product-description">
+  <div class="description-short">
+    {{ product.description | split: '</p>' | first }}
+    <span class="read-more-toggle" onclick="toggleReadMore()">Read More</span>
+  </div>
+  <div class="description-long read-more-content">
+    {{ product.description }}
+    <span class="read-more-toggle" onclick="toggleReadMore()">Read Less</span>
+  </div>
+</div>
+
+<script>
+  function toggleReadMore() {
+    var shortDescription = document.querySelector('.description-short');
+    var longDescription = document.querySelector('.description-long');
+
+    if (shortDescription.style.display === "none") {
+      shortDescription.style.display = "block";
+      longDescription.style.display = "none";
+    } else {
+      shortDescription.style.display = "none";
+      longDescription.style.display = "block";
+    }
+  }
+</script>
+
+<style>
+.read-more-content {
+  display: none;
+}
+
+.read-more-toggle {
+  cursor: pointer;
+  color: blue;
+  text-decoration: underline;
+}
+
+.read-more-toggle:hover {
+  text-decoration: none;
+}
+</style>
